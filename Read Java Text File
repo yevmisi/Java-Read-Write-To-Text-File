@@ -1,0 +1,45 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.*;
+import javax.swing.JOptionPane;
+
+public class ReadTextMain {
+
+	public static void main(String[] args) throws IOException {
+		Path path = Paths.get("C:\\\\\\\\Users\\\\\\\\Admin\\\\\\\\Desktop\\\\\\\\java.txt");
+		List<String> titles = Files.lines(path).collect(Collectors.toList());
+		
+		String search = getInput();
+		
+		displayResults(search, titles);
+		
+		
+	}
+
+	public static String getInput() {
+		System.out.println("Search: ");
+	    String prompt = "Enter Full Name: ";
+		String titleName = JOptionPane.showInputDialog(null, prompt, "Information", JOptionPane.INFORMATION_MESSAGE);
+		Scanner sc = new Scanner( titleName );
+		sc.close();
+		
+		return titleName;
+	}
+
+	public static void displayResults(String search, List<String> titles) throws IOException{
+		boolean inFile = titles.stream().anyMatch(p->p.equalsIgnoreCase(search));
+		
+		if (inFile) {
+			System.out.println("Approved");
+			JOptionPane.showMessageDialog( null, "Approved" , "Success", JOptionPane.INFORMATION_MESSAGE  );
+		}else {
+			System.out.println("Disapproved");
+			JOptionPane.showMessageDialog( null, "Disapproved" , "Unsuccesfull", JOptionPane.INFORMATION_MESSAGE  );
+		}
+	}
+}
