@@ -1,0 +1,40 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		System.out.println("User{");
+		String prompt = "Name: ";
+		String input = JOptionPane.showInputDialog(null, prompt, "Information", JOptionPane.INFORMATION_MESSAGE);
+		Scanner myObj = new Scanner( input );
+		System.out.println("Name: " + input);
+		
+		/*String prompt1 = "Age: ";
+		String input1 = JOptionPane.showInputDialog(null, prompt1, "Information", JOptionPane.INFORMATION_MESSAGE);
+		Scanner myObj1 = new Scanner( input1 );
+		System.out.println("Age: " + input1);*/
+		//+ "\nAge: " + input1 Disabled
+		
+		System.out.println("}");
+		JOptionPane.showMessageDialog( null, "Name: " + input , "User Created Successfully", JOptionPane.INFORMATION_MESSAGE  );
+		
+		File file = new File("C:\\\\Users\\\\Admin\\\\Desktop\\\\java.txt");
+		FileWriter fW = new FileWriter(file, true);
+		PrintWriter pW = new PrintWriter(fW);
+		
+		pW.println("JavaAppUser{");
+		pW.println(input);
+		//pW.println(input1);
+		pW.println("}");
+		pW.println("____________________");
+		
+		pW.close();
+	}
+
+}
