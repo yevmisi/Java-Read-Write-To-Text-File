@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.Scanner;
+import java.io.File;
+
+public class WritingToFile {
+
+	public static void main(String[] args) throws IOException {
+		Scanner myObj = new Scanner(System.in);
+		File file = new File("C:\\\\Users\\\\Admin\\\\Desktop\\\\java.txt");
+		FileWriter fW = new FileWriter(file, true);
+		PrintWriter pW = new PrintWriter(fW);
+		
+		System.out.println("Create User:");
+		System.out.println("Full Name:");
+		
+		String Fn = myObj.nextLine();
+		
+		System.out.println("Age:");
+		int age = myObj.nextInt();
+		
+		System.out.println("User Created:");
+		System.out.println("Name: " + Fn);
+		System.out.println("Age: " + age);
+		System.out.println("____________________");
+		
+		pW.println("JavaAppUser{");
+		pW.println("Name: " + Fn);
+		pW.println("Age: " + age);
+		pW.println("____________________");
+		pW.println("}");
+		
+		pW.close();
+		
+	}
+	
+}
